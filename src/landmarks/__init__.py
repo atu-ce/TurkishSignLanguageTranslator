@@ -1,0 +1,1 @@
+"""MediaPipe landmark çıkarım modülü."""
