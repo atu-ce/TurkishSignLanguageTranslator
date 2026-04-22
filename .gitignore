@@ -39,6 +39,9 @@ ENV/
 .vscode/
 .idea/
 .claude/
+
+# External references (third-party datasets and repos for inspection)
+external/
 *.swp
 *.swo
 *~
@@ -49,6 +52,8 @@ Thumbs.db
 data/raw/
 data/processed/
 data/interim/
+data/Images/
+data/*.zip
 *.h5
 *.hdf5
 *.pkl
