@@ -177,23 +177,12 @@ python src/train.py --model mlp
 
 ## Veri Seti
 
-Proje **landmark tabanlı** olduğu için eğitim verisi `(N, 21, 3)` şeklinde NPY dosyalarıdır, görüntü değil.
-
-İki veri kaynağı kullanılabilir:
-
-### 1. Hazır TİD görüntü veri setinden dönüştürme (önerilen)
+Eğitim verisi olarak **Kaggle — Turkish Sign Language (Fingerspelling)** görüntü veri seti kullanılır:
 
 - Kaynak: [Kaggle — Turkish Sign Language (Fingerspelling)](https://www.kaggle.com/datasets/feronial/turkish-sign-languagefinger-spelling)
-- `scripts/convert_dataset.py` her görüntüyü MediaPipe'tan geçirir ve landmark NPY olarak kaydeder
-- **Avantaj:** 30+ kişiden toplanmış çeşitlilik, hızlı başlangıç
+- 29 sınıf (TİD alfabesi), 30+ kişiden toplanmış görüntüler
 
-### 2. Kendi verinizi toplama
-
-- `python src/collect_data.py --label A`
-- Kameranızla harf başına 200+ örnek kaydeder
-- **Avantaj:** Sizin kullanım koşullarınıza özel, ince ayar için faydalı
-
-İdeal iş akışı: Kaggle verisiyle temel modeli eğit, sonra kendi verinizle ince ayar yap.
+Proje landmark tabanlı olduğu için görüntüler doğrudan modele verilmez. `scripts/convert_dataset.py` her görüntüyü MediaPipe'tan geçirir ve sonuçları `(N, 21, 3)` şeklinde NPY dosyalarına kaydeder.
 
 ---
 
@@ -203,10 +192,9 @@ Proje **landmark tabanlı** olduğu için eğitim verisi `(N, 21, 3)` şeklinde 
 TurkishSignLanguageTranslator/
 ├── data/                        # Landmark dataset (NPY, gitignore'da)
 ├── models/                      # .task ve eğitilmiş .h5 modelleri (gitignore'da)
-├── notebooks/                   # Deneme ve analiz not defterleri
 ├── scripts/
 │   ├── download_models.py       # MediaPipe .task indirici
-│   └── convert_dataset.py       # Görüntü → landmark dönüştürücü (yapım aşamasında)
+│   └── convert_dataset.py       # Kaggle görüntüleri → landmark NPY (yapım aşamasında)
 ├── src/
 │   ├── preprocessing/           # Görüntü önişleme yardımcıları
 │   ├── landmarks/
@@ -214,7 +202,6 @@ TurkishSignLanguageTranslator/
 │   ├── features/                # Özellik mühendisliği
 │   ├── models/                  # MLP & LSTM model tanımları
 │   ├── demo_landmarks.py        # Canlı kamera + landmark görselleştirme
-│   ├── collect_data.py          # Veri toplama (yapım aşamasında)
 │   ├── train.py                 # Eğitim (yapım aşamasında)
 │   └── main.py                  # Gerçek zamanlı çıkarım (yapım aşamasında)
 ├── .env.example
