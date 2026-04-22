@@ -38,6 +38,7 @@ ENV/
 # IDE / Editor
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 *~
@@ -60,6 +61,7 @@ data/interim/
 models/checkpoints/
 models/*.h5
 models/*.pt
+models/*.task
 logs/
 runs/
 wandb/
