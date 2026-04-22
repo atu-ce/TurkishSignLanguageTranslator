@@ -39,9 +39,6 @@ ENV/
 .vscode/
 .idea/
 .claude/
-
-# External references (third-party datasets and repos for inspection)
-external/
 *.swp
 *.swo
 *~
@@ -53,6 +50,8 @@ data/raw/
 data/processed/
 data/interim/
 data/Images/
+data/train/
+data/test/
 data/*.zip
 *.h5
 *.hdf5
